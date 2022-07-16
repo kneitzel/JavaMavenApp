@@ -20,21 +20,23 @@
         <main.class>de.kneitzel.JavaApp</main.class>
         <main.module>AppModule</main.module>
         <java.version>17</java.version>
+        <required.maven.version>3.6.3</required.maven.version>
 
         <!-- Dependency versions -->
         <junit.version>5.8.2</junit.version>
         <lombok.version>1.18.24</lombok.version>
 
         <!-- Plugin dependencies -->
-        <maven.compiler.plugin>3.8.1</maven.compiler.plugin>
-        <maven.dependency.plugin>3.1.2</maven.dependency.plugin>
-        <maven.surfire.plugin>3.0.0-M5</maven.surfire.plugin>
-        <moditect.maven.plugin>1.0.0.RC1</moditect.maven.plugin>
-        <jpackage.maven.plugin>0.1.2</jpackage.maven.plugin>
-        <maven.pmd.version>3.14.0</maven.pmd.version>
-        <pmd.version>6.38.0</pmd.version>
-        <codehaus.version.plugin>2.8.1</codehaus.version.plugin>
-        <spotbugs.maven.plugin>4.7.0.0</spotbugs.maven.plugin>
+        <maven.compiler.plugin>3.10.1</maven.compiler.plugin>
+        <maven.dependency.plugin>3.3.0</maven.dependency.plugin>
+        <maven.enforcer.plugin>3.1.0</maven.enforcer.plugin>
+        <maven.surfire.plugin>3.0.0-M6</maven.surfire.plugin>
+        <moditect.maven.plugin>1.0.0.RC2</moditect.maven.plugin>
+        <jpackage.maven.plugin>0.1.3</jpackage.maven.plugin>
+        <maven.pmd.version>3.16.0</maven.pmd.version>
+        <pmd.version>6.47.0</pmd.version>
+        <codehaus.version.plugin>2.11.0</codehaus.version.plugin>
+        <spotbugs.maven.plugin>4.7.1.0</spotbugs.maven.plugin>
         <spotbugs.version>4.7.1</spotbugs.version>
 
         <!-- other properties -->
@@ -63,6 +65,27 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven.enforcer.plugin}</version>
+                <executions>
+                    <execution>
+                        <id>enforce-versions</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>${required.maven.version}</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -167,6 +190,7 @@
                             <compression>2</compression>
                             <stripDebug>true</stripDebug>
                             <outputDirectory>${project.build.directory}/jlink-image</outputDirectory>
+                            <jarInclusionPolicy>APP_WITH_DEPENDENCIES</jarInclusionPolicy>
                         </configuration>
                     </execution>
                 </executions>
