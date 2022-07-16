@@ -38,6 +38,7 @@
         <codehaus.version.plugin>2.11.0</codehaus.version.plugin>
         <spotbugs.maven.plugin>4.7.1.0</spotbugs.maven.plugin>
         <spotbugs.version>4.7.1</spotbugs.version>
+        <jetbrains.annotations.version>23.0.0</jetbrains.annotations.version>
 
         <!-- other properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -60,6 +61,14 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- Dependency used for @NotNull / @Nullable -->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${jetbrains.annotations.version}</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
@@ -227,6 +236,18 @@
                         <version>${spotbugs.version}</version>
                     </dependency>
                 </dependencies>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <!-- pmd does not stop build when violations are found -->
+                            <goal>spotbugs</goal>
+
+                            <!-- check stops the build when violations are found -->
+                            <!-- <goal>check</goal> -->
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -265,8 +286,13 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <phase>prepare-package</phase>
                         <goals>
-                            <goal>check</goal>
+                            <!-- pmd does not stop build when violations are found -->
+                            <goal>pmd</goal>
+
+                            <!-- check stops the build when violations are found -->
+                            <!-- <goal>check</goal> -->
                         </goals>
                     </execution>
                 </executions>
