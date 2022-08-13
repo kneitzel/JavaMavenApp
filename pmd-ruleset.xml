@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ruleset name="Custom Java Ruleset"
-    xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
 
     <description>
         Custom ruleset for Java
@@ -14,11 +14,26 @@
         <exclude name="SystemPrintln" />
     </rule>
 
-    <rule ref="category/java/codestyle.xml" />
+    <rule ref="category/java/codestyle.xml">
+        <!-- That is not my code style! -->
+        <exclude name="AtLeastOneConstructor" />
 
-    <rule ref="category/java/design.xml" />
+        <!-- long variables are acceptable -->
+        <exclude name="LongVariable"/>
 
-    <rule ref="category/java/documentation.xml" />
+        <!-- Multiple return statements are ok -->
+        <exclude name="OnlyOneReturn"/>
+    </rule>
+
+    <rule ref="category/java/design.xml">
+        <!-- Problems with builder and streams/lambdas -->
+        <exclude name="LawOfDemeter" />
+    </rule>
+
+    <rule ref="category/java/documentation.xml">
+        <!-- Long comments are not a problem! -->
+        <exclude name="CommentSize"/>
+    </rule>
 
     <rule ref="category/java/errorprone.xml" />
 
@@ -28,4 +43,11 @@
 
     <rule ref="category/java/security.xml" />
 
+    <rule ref="category/java/design.xml/LoosePackageCoupling">
+        <properties>
+            <property name="packages">
+                <value>de.kneitzel</value>
+            </property>
+        </properties>
+    </rule>
 </ruleset>

@@ -74,6 +74,7 @@
 
     <build>
         <plugins>
+            <!-- Enforcer to enforce min Maven version -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
@@ -95,6 +96,7 @@
                 </executions>
             </plugin>
 
+            <!-- Compiler including Lobok -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -111,6 +113,7 @@
                 </configuration>
             </plugin>
 
+            <!-- Test execution -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -120,6 +123,7 @@
                 </configuration>
             </plugin>
 
+            <!-- Copy dependencies -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -140,6 +144,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Build image -->
             <plugin>
                 <groupId>org.moditect</groupId>
                 <artifactId>moditect-maven-plugin</artifactId>
@@ -204,6 +210,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Build JPackage App-Image -->
             <plugin>
                 <groupId>com.github.akman</groupId>
                 <artifactId>jpackage-maven-plugin</artifactId>
@@ -224,6 +232,7 @@
                 </executions>
             </plugin>
 
+            <!-- Spotbugs Code Analyzer -->
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
@@ -248,8 +257,12 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <excludeFilterFile>spotbugs-exclude-filter.xml</excludeFilterFile>
+                </configuration>
             </plugin>
 
+            <!-- PMD static code analysis -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
@@ -298,6 +311,7 @@
                 </executions>
             </plugin>
 
+            <!-- Check for new versions in dependencies -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
