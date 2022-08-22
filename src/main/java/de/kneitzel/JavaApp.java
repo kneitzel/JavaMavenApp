@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 public final class JavaApp {
 
     /**
-     * Provate Constructor - we never create an instance!
+     * Private Constructor - we never create an instance!
      */
     private JavaApp() {}
 

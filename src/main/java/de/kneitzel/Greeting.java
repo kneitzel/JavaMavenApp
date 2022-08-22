@@ -2,7 +2,6 @@ package de.kneitzel;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
 /**
  * Simple Greeting class for some demonstration.
  */
