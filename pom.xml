@@ -23,7 +23,7 @@
         <required.maven.version>3.6.3</required.maven.version>
 
         <!-- Dependency versions -->
-        <junit.version>5.8.2</junit.version>
+        <junit.version>5.9.1</junit.version>
         <lombok.version>1.18.24</lombok.version>
 
         <!-- Plugin dependencies -->
@@ -40,10 +40,10 @@
         <moditect.maven.plugin>1.0.0.RC2</moditect.maven.plugin>
         <jpackage.maven.plugin>0.1.3</jpackage.maven.plugin>
         <maven.pmd.plugin>3.16.0</maven.pmd.plugin>
-        <pmd.version>6.47.0</pmd.version>
+        <pmd.version>6.49.0</pmd.version>
         <codehaus.version.plugin>2.11.0</codehaus.version.plugin>
-        <spotbugs.maven.plugin>4.7.1.0</spotbugs.maven.plugin>
-        <spotbugs.version>4.7.1</spotbugs.version>
+        <spotbugs.maven.plugin>4.7.2.0</spotbugs.maven.plugin>
+        <spotbugs.version>4.7.2</spotbugs.version>
         <jetbrains.annotations.version>23.0.0</jetbrains.annotations.version>
 
         <!-- other properties -->
@@ -163,7 +163,8 @@
                         <configuration>
                             <outputDirectory>${project.build.directory}/modules</outputDirectory>
                             <overwriteExistingFiles>true</overwriteExistingFiles>
-							<!-- Beispiel wie eine Dependency ohne module-info diese bekommen kann! -->
+
+                            <!-- Beispiel wie eine Dependency ohne module-info diese bekommen kann! -->
 							<!--
                             <modules>
                                 <module>
