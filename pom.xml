@@ -68,7 +68,7 @@
                             <execution>
                                 <id>build-native</id>
                                 <goals>
-                                    <goal>build</goal>
+                                    <goal>compile-no-fork</goal>
                                 </goals>
                                 <phase>package</phase>
                             </execution>
@@ -81,7 +81,8 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <!-- ... -->
+                            <imageName>${appName}</imageName>
+                            <mainClass>${main.class}</mainClass>
                         </configuration>
                     </plugin>
                 </plugins>
