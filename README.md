@@ -11,9 +11,9 @@ This project includes:
 - Creation of native binary (GraalVM)
 
 Create native executable with GraalVM use one of these:
-mvnw -PGraalVM package
-mvnw -DGraalVM package
+- ./mvnw -PGraalVM package
+- ./mvnw -DGraalVM package
 
 Create image (JLink and JPackage):
-mvnw -PImage package
-mvnw -DImage package
+- ./mvnw -PImage package
+- ./mvnw -DImage package
