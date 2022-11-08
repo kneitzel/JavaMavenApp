@@ -9,3 +9,11 @@ This project includes:
 - static code analysis with PMD and spotbugs
 - Creation of image (JLink) and app-image (JPackage)
 - Creation of native binary (GraalVM)
+
+Create native executable with GraalVM use one of these:
+mvnw -PGraalVM package
+mvnw -DGraalVM package
+
+Create image (JLink and JPackage):
+mvnw -PImage package
+mvnw -DImage package
