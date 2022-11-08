@@ -2,6 +2,10 @@
 
 Example Maven Project for a Java Application.
 
-Maven modules are configured so that even Images are build (including JPackage app-image).
-
-Project includes PMD and spotbugs!
+This project includes:
+- Lombok to reduce biolerplate code
+- Adding module-info for dependencies that are missing these.
+- Unit Tests are run at build
+- static code analysis with PMD and spotbugs
+- Creation of image (JLink) and app-image (JPackage)
+- Creation of native binary (GraalVM)
