@@ -24,7 +24,7 @@
 
         <!-- Dependency versions -->
         <jetbrains.annotations.version>23.0.0</jetbrains.annotations.version>
-        <junit.version>5.8.2</junit.version>
+        <junit.version>5.9.1</junit.version>
         <lombok.version>1.18.24</lombok.version>
         <pmd.version>6.49.0</pmd.version>
         <spotbugs.version>4.7.2</spotbugs.version>
@@ -46,7 +46,7 @@
         <moditect.maven.plugin>1.0.0.RC2</moditect.maven.plugin>
         <native.maven.plugin>0.9.17</native.maven.plugin>
         <spotbugs.maven.plugin>4.7.2.0</spotbugs.maven.plugin>
-
+        
         <!-- other properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -207,7 +207,8 @@
                         <configuration>
                             <outputDirectory>${project.build.directory}/modules</outputDirectory>
                             <overwriteExistingFiles>true</overwriteExistingFiles>
-							<!-- Beispiel wie eine Dependency ohne module-info diese bekommen kann! -->
+
+                            <!-- Beispiel wie eine Dependency ohne module-info diese bekommen kann! -->
 							<!--
                             <modules>
                                 <module>
