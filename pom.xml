@@ -26,8 +26,8 @@
         <jetbrains.annotations.version>23.0.0</jetbrains.annotations.version>
         <junit.version>5.8.2</junit.version>
         <lombok.version>1.18.24</lombok.version>
-        <pmd.version>6.47.0</pmd.version>
-        <spotbugs.version>4.7.1</spotbugs.version>
+        <pmd.version>6.49.0</pmd.version>
+        <spotbugs.version>4.7.2</spotbugs.version>
 
         <!-- Plugin dependencies -->
         <codehaus.version.plugin>2.11.0</codehaus.version.plugin>
@@ -45,7 +45,7 @@
         <maven.surfire.plugin>3.0.0-M6</maven.surfire.plugin>
         <moditect.maven.plugin>1.0.0.RC2</moditect.maven.plugin>
         <native.maven.plugin>0.9.17</native.maven.plugin>
-        <spotbugs.maven.plugin>4.7.1.0</spotbugs.maven.plugin>
+        <spotbugs.maven.plugin>4.7.2.0</spotbugs.maven.plugin>
 
         <!-- other properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
