@@ -4,15 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Edit these to match your project -->
     <groupId>de.kneitzel</groupId>
     <artifactId>javaapp</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!-- Modify or remove -->
     <organization>
         <name>Java Forum</name>
     </organization>
 
+    <!-- Properties of the project - Configuration is done here -->
     <properties>
+
         <!-- Application Properties -->
         <link.name>${project.artifactId}</link.name>
         <launcher>${project.artifactId}</launcher>
@@ -85,10 +89,13 @@
             <version>${jetbrains.annotations.version}</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- Add your dependencies here if required -->
     </dependencies>
 
     <build>
         <plugins>
+
             <!-- Enforcer to enforce min Maven version -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -111,7 +118,7 @@
                 </executions>
             </plugin>
 
-            <!-- Compiler including Lobok -->
+            <!-- Compiler including Lombok -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -280,6 +287,12 @@
     </build>
 
     <profiles>
+
+        <!-- Profile that adds compiling to a native binary using
+             GraalVM an Native Image https://www.graalvm.org/
+
+             Add -PGraalVM or -DGraalVM to use this profile.
+             -->
         <profile>
             <id>GraalVM</id>
             <activation>
@@ -319,6 +332,10 @@
             </build>
         </profile>
 
+        <!-- Profile that adds JLink and JPackage runs.
+
+             Add -PImage or -DImage to use this profile.
+             -->
         <profile>
             <id>Image</id>
             <activation>
