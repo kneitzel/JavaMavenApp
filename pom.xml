@@ -30,6 +30,7 @@
         <jetbrains.annotations.version>23.0.0</jetbrains.annotations.version>
         <junit.version>5.9.1</junit.version>
         <lombok.version>1.18.24</lombok.version>
+        <mockito.version>4.9.0</mockito.version>
         <pmd.version>6.51.0</pmd.version>
         <spotbugs.version>4.7.3</spotbugs.version>
 
@@ -79,6 +80,14 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Mockito -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
 
