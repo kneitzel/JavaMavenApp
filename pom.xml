@@ -9,6 +9,8 @@
     <artifactId>javaapp</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <packaging>jar</packaging>
+
     <!-- Modify or remove -->
     <organization>
         <name>Java Forum</name>
