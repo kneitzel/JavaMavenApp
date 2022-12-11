@@ -33,7 +33,7 @@
         <junit.version>5.9.1</junit.version>
         <lombok.version>1.18.24</lombok.version>
         <mockito.version>4.9.0</mockito.version>
-        <pmd.version>6.51.0</pmd.version>
+        <pmd.version>6.52.0</pmd.version>
         <spotbugs.version>4.7.3</spotbugs.version>
 
         <!-- Plugin dependencies -->
@@ -88,6 +88,12 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
@@ -172,7 +178,7 @@
                     <execution>
                         <phase>prepare-package</phase>
                         <goals>
-                            <!-- pmd does not stop build when violations are found -->
+                            <!-- spotbugs does not stop build when violations are found -->
                             <goal>spotbugs</goal>
 
                             <!-- check stops the build when violations are found -->
