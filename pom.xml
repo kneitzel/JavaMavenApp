@@ -6,7 +6,7 @@
 
     <!-- Edit these to match your project -->
     <groupId>de.kneitzel</groupId>
-    <artifactId>javaapp</artifactId>
+    <artifactId>fizzbuzz</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <packaging>jar</packaging>
@@ -29,11 +29,11 @@
         <required.maven.version>3.6.3</required.maven.version>
 
         <!-- Dependency versions -->
-        <jetbrains.annotations.version>23.0.0</jetbrains.annotations.version>
-        <junit.version>5.9.1</junit.version>
-        <lombok.version>1.18.24</lombok.version>
-        <mockito.version>4.9.0</mockito.version>
-        <pmd.version>6.52.0</pmd.version>
+        <jetbrains.annotations.version>24.0.0</jetbrains.annotations.version>
+        <junit.version>5.9.2</junit.version>
+        <lombok.version>1.18.26</lombok.version>
+        <mockito.version>5.1.1</mockito.version>
+        <pmd.version>6.54.0</pmd.version>
         <spotbugs.version>4.7.3</spotbugs.version>
 
         <!-- Plugin dependencies -->
@@ -107,6 +107,26 @@
         </dependency>
 
         <!-- Add your dependencies here if required -->
+
+        <!-- https://mvnrepository.com/artifact/org.jboss.resteasy/resteasy-client -->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
+            <version>6.2.2.Final</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.activation/jakarta.activation-api -->
+        <dependency>
+            <groupId>jakarta.activation</groupId>
+            <artifactId>jakarta.activation-api</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jboss.resteasy/resteasy-jackson2-provider -->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson2-provider</artifactId>
+            <version>6.2.2.Final</version>
+        </dependency>
+
     </dependencies>
 
     <build>
