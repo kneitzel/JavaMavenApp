@@ -14,6 +14,6 @@ Create native executable with GraalVM use one of these:
 - ./mvnw -PGraalVM package
 - ./mvnw -DGraalVM package
 
-Create image (JLink and JPackage):
+Create image (Using JPackage):
 - ./mvnw -PImage package
 - ./mvnw -DImage package
