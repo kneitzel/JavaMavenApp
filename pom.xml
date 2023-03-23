@@ -110,8 +110,9 @@
     </dependencies>
 
     <build>
-        <plugins>
+        <finalName>${jar.filename}</finalName>
 
+        <plugins>
             <!-- Enforcer to enforce min Maven version -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -360,7 +361,6 @@
                 </property>
             </activation>
             <build>
-                <finalName>${jar.filename}</finalName>
                 <plugins>
                     <!-- Copy dependencies -->
                     <plugin>
