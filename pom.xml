@@ -47,13 +47,13 @@
         <maven.enforcer.plugin>3.1.0</maven.enforcer.plugin>
         <maven.install.plugin>3.0.0-M1</maven.install.plugin>
         <maven.jar.plugin>3.2.2</maven.jar.plugin>
-        <maven.pmd.plugin>3.19.0</maven.pmd.plugin>
+        <maven.pmd.plugin>3.16.0</maven.pmd.plugin>
         <maven.resources.plugin>3.2.0</maven.resources.plugin>
         <maven.site.plugin>4.0.0-M1</maven.site.plugin>
-        <maven.surfire.plugin>3.0.0-M7</maven.surfire.plugin>
+        <maven.surfire.plugin>3.0.0-M6</maven.surfire.plugin>
         <moditect.maven.plugin>1.0.0.RC2</moditect.maven.plugin>
         <native.maven.plugin>0.9.17</native.maven.plugin>
-        <spotbugs.maven.plugin>4.7.3.0</spotbugs.maven.plugin>
+        <spotbugs.maven.plugin>4.7.2.0</spotbugs.maven.plugin>
         
         <!-- other properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -219,6 +219,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
+                    <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
                     <minimumTokens>100</minimumTokens>
                     <targetJdk>${java.version}</targetJdk>
                     <rulesets>
