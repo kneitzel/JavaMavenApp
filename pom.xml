@@ -25,40 +25,41 @@
         <appName>${project.artifactId}</appName>
         <main.class>de.kneitzel.JavaApp</main.class>
         <main.module>AppModule</main.module>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <jar.filename>${project.artifactId}-${project.version}</jar.filename>
-        <required.maven.version>3.6.3</required.maven.version>
 
         <!-- Dependency versions -->
-        <jetbrains.annotations.version>24.0.1</jetbrains.annotations.version>
-        <junit.version>5.9.2</junit.version>
-        <lombok.version>1.18.26</lombok.version>
-        <mockito.version>5.2.0</mockito.version>
-        <pmd.version>6.55.0</pmd.version>
-        <spotbugs.version>4.7.3</spotbugs.version>
+        <jetbrains.annotations.version>24.1.0</jetbrains.annotations.version>
+        <junit.version>5.10.2</junit.version>
+        <lombok.version>1.18.32</lombok.version>
+        <mockito.version>5.11.0</mockito.version>
+        <spotbugs.version>4.8.5</spotbugs.version>
 
         <!-- Plugin dependencies -->
-        <codehaus.version.plugin>2.11.0</codehaus.version.plugin>
-        <jpackage.maven.plugin>0.1.3</jpackage.maven.plugin>
-        <maven.clean.plugin>3.2.0</maven.clean.plugin>
-        <maven.compiler.plugin>3.10.1</maven.compiler.plugin>
-        <maven.dependency.plugin>3.3.0</maven.dependency.plugin>
-        <maven.deploy.plugin>3.0.0-M2</maven.deploy.plugin>
-        <maven.enforcer.plugin>3.1.0</maven.enforcer.plugin>
-        <maven.install.plugin>3.0.0-M1</maven.install.plugin>
-        <maven.jar.plugin>3.2.2</maven.jar.plugin>
-        <maven.pmd.plugin>3.16.0</maven.pmd.plugin>
-        <maven.resources.plugin>3.2.0</maven.resources.plugin>
-        <maven.site.plugin>4.0.0-M1</maven.site.plugin>
-        <maven.surfire.plugin>3.0.0-M6</maven.surfire.plugin>
+        <codehaus.version.plugin>2.16.2</codehaus.version.plugin>
+        <jpackage.maven.plugin>0.1.5</jpackage.maven.plugin>
+        <maven.clean.plugin>3.3.2</maven.clean.plugin>
+        <maven.compiler.plugin>3.13.0</maven.compiler.plugin>
+        <maven.dependency.plugin>3.6.1</maven.dependency.plugin>
+        <maven.deploy.plugin>3.1.2</maven.deploy.plugin>
+        <maven.enforcer.plugin>3.4.1</maven.enforcer.plugin>
+        <maven.install.plugin>3.1.2</maven.install.plugin>
+        <maven.jar.plugin>3.4.1</maven.jar.plugin>
+        <maven.pmd.plugin>3.22.0</maven.pmd.plugin>
+        <maven.resources.plugin>3.3.1</maven.resources.plugin>
+        <maven.site.plugin>4.0.0-M13</maven.site.plugin>
+        <maven.surfire.plugin>3.2.5</maven.surfire.plugin>
         <moditect.maven.plugin>1.0.0.RC2</moditect.maven.plugin>
-        <native.maven.plugin>0.9.17</native.maven.plugin>
-        <spotbugs.maven.plugin>4.7.2.0</spotbugs.maven.plugin>
+        <native.maven.plugin>0.10.1</native.maven.plugin>
+        <spotbugs.maven.plugin>4.8.5.0</spotbugs.maven.plugin>
         
         <!-- other properties -->
+        <pmd.target>pmd</pmd.target> <!-- Set to 'pmd' if pmd should not fail on issues. Set to 'check' if you want build to fail when issues found -->
+        <spotbugs.target>spotbugs</spotbugs.target> <!-- Set to 'spotbugs' if spotbugs should not fail on issues. Set to 'check' if you want build to fail when issues found -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <required.maven.version>3.8.6</required.maven.version>
 
     </properties>
 
@@ -178,11 +179,7 @@
                     <execution>
                         <phase>prepare-package</phase>
                         <goals>
-                            <!-- spotbugs does not stop build when violations are found -->
-                            <goal>spotbugs</goal>
-
-                            <!-- check stops the build when violations are found -->
-                            <!-- <goal>check</goal> -->
+                            <goal>${spotbugs.target}</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -196,30 +193,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>${maven.pmd.plugin}</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>net.sourceforge.pmd</groupId>
-                        <artifactId>pmd-core</artifactId>
-                        <version>${pmd.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>net.sourceforge.pmd</groupId>
-                        <artifactId>pmd-java</artifactId>
-                        <version>${pmd.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>net.sourceforge.pmd</groupId>
-                        <artifactId>pmd-javascript</artifactId>
-                        <version>${pmd.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>net.sourceforge.pmd</groupId>
-                        <artifactId>pmd-jsp</artifactId>
-                        <version>${pmd.version}</version>
-                    </dependency>
-                </dependencies>
                 <configuration>
-                    <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
                     <minimumTokens>100</minimumTokens>
                     <targetJdk>${java.version}</targetJdk>
                     <rulesets>
@@ -231,11 +205,7 @@
                     <execution>
                         <phase>prepare-package</phase>
                         <goals>
-                            <!-- pmd does not stop build when violations are found -->
-                            <goal>pmd</goal>
-
-                            <!-- check stops the build when violations are found -->
-                            <!-- <goal>check</goal> -->
+                            <goal>${pmd.target}</goal>
                         </goals>
                     </execution>
                 </executions>
