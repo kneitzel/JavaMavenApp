@@ -19,3 +19,7 @@ My current advice is to use a long term supported (LTS) version of either Java 1
 
 - **[Documentation in English](documentation/en/_Index.md)**
 - **[Dokumentation in Deutsch](documentation/de/_Index.md)**
+
+**Important: ChatGPT was utilized to generate the documentation based on
+predefined content specifications, as it represents the fastest way to produce
+comprehensive documentation.**
