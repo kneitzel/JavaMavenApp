@@ -9,12 +9,12 @@ Creation of an "image": A directory structure with files along with a binary tha
 
 ## Invocation
 
-To build the image, start Maven with the Image profile and the install goal.
+To build the image, start Maven with the image profile and the install goal.
 Since there are sometimes problems when files need to be overwritten, a clean should be run first.
 
 This can be done in one run:
 ```shell
-mvnw -PImage clean install
+mvnw -Pimage clean install
 ```
 
 ## Description of theImage Profile
@@ -23,10 +23,10 @@ mvnw -PImage clean install
 
 ```xml
         <profile>
-            <id>Image</id>
+            <id>image</id>
             <activation>
                 <property>
-                    <name>Image</name>
+                    <name>image</name>
                 </property>
             </activation>
             <build>
@@ -39,8 +39,8 @@ mvnw -PImage clean install
         </profile>
 ```
 
-- The profile has an ID: Image. This allows the profile to be selected using -PImage.
-- Additionally, the profile can be selected using a define: -DImage
+- The profile has an ID: image. This allows the profile to be selected using -Pimage.
+- Additionally, the profile can be selected using a define: -Dimage
 - The profile itself then contains plugins.
 
 ### maven-dependency-plugin
@@ -146,26 +146,41 @@ This setup ensures that the project artifact is correctly copied to the appropri
 ### jpackage-maven-plugin
 
 ```xml
-<plugin>
-    <groupId>com.github.akman</groupId>
-    <artifactId>jpackage-maven-plugin</artifactId>
-    <version>${jpackage.maven.plugin}</version>
-    <configuration>
-        <name>${appName}</name>
-        <type>IMAGE</type>
-        <mainclass>${main.class}</mainclass>
-        <input>${project.build.directory}/modules</input>
-        <mainjar>${jar.filename}.jar</mainjar>
-    </configuration>
-    <executions>
-        <execution>
-            <phase>install</phase>
-            <goals>
-                <goal>jpackage</goal>
-            </goals>
-        </execution>
-    </executions>
-</plugin>
+                    <plugin>
+                        <groupId>com.github.akman</groupId>
+                        <artifactId>jpackage-maven-plugin</artifactId>
+                        <version>${jpackage.maven.plugin}</version>
+                        <configuration>
+                            <name>${appName}</name>
+                            <type>IMAGE</type>
+                            <modulepath>
+                                <dependencysets>
+                                    <dependencyset>
+                                        <includenames>
+                                            <includename>javafx\..*</includename>
+                                        </includenames>
+                                    </dependencyset>
+                                </dependencysets>
+                            </modulepath>
+                            <addmodules>
+                                <addmodule>javafx.controls</addmodule>
+                                <addmodule>javafx.graphics</addmodule>
+                                <addmodule>javafx.fxml</addmodule>
+                                <addmodule>javafx.web</addmodule>
+                            </addmodules>
+                            <mainclass>${main.class}</mainclass>
+                            <input>${project.build.directory}/modules</input>
+                            <mainjar>${jar.filename}.jar</mainjar>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>jpackage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
 ```
 The jpackage-maven-plugin facilitates the creation of a self-contained application image using Java's JPackage 
 tool, which is part of the JDK. This plugin is configured to run during the 'install' phase of the Maven build 
@@ -176,6 +191,8 @@ Key configurations for this plugin include:
 
 - **Name and Type**: Specifies the application's name and sets the package type to 'IMAGE', indicating a standalone 
 installation image is created.
+- **Module Path**: Defines the path to Java modules and their dependencies, essential for applications that use Java modules.
+- **Additional Modules**: Lists extra JavaFX modules to include, ensuring all GUI components function correctly.
 - **Main Class**: Sets the entry point of the application, which is the fully qualified name of the main class.
 - **Input Directory**: Points to the directory containing the compiled modules and dependencies.
 - **Main JAR**: Specifies the main executable JAR file of the application.

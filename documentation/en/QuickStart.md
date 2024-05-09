@@ -17,10 +17,15 @@ To build the application, maven / the maven wrapper can be used. Simply do a
 to build the application.
 (simply call mvnw instead of ./mvnw on windows!)
 
-### Build the Image
+### Build the application Image (jpackage)
 
-To build the image, the profile Image must be used:
-```./mvnw -DImage install```
+To build the image with jpackage, the profile image must be used:
+```./mvnw -Dimage install```
+
+### Build the native Image (GraalVM)
+
+To build the native image with GraalVM, the profile native must be used:
+```./mvnw -Dnative install```
 
 ## Static code analysis results
 

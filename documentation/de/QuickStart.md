@@ -21,11 +21,17 @@ aufrufen.
 Um die Anwendung zu übersetzen kannst Du aufrufen:
 ```./mvnw package```
 
-### Bau des Images zur weitergabe
+### Bau des Application Images zur Weitergabe (JPackage)
 
-Um das Image zu bauen, rufst du einfach Maven mit dem Profil Image und dem
+Um das Image mit JPackage zu bauen, rufst du einfach Maven mit dem Profil Image und dem
 Ziel install auf:
-```./mvnw -DImage install```
+```./mvnw -Dimage install```
+
+### Bau des native Images zur Weitergabe (GraalVM)
+
+Um das Image mit NativeImage / GraalVM zu bauen, rufst du einfach Maven mit dem Profil Image und dem
+Ziel install auf:
+```./mvnw -Dnative install```
 
 ## Ergebnisse der statischen Codeanalyse
 

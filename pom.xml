@@ -24,7 +24,6 @@
         <launcher>${project.artifactId}</launcher>
         <appName>${project.artifactId}</appName>
         <main.class>de.kneitzel.JavaApp</main.class>
-        <main.module>AppModule</main.module>
         <java.version>21</java.version>
         <jar.filename>${project.artifactId}-${project.version}</jar.filename>
 
@@ -45,9 +44,11 @@
         <maven.enforcer.plugin>3.4.1</maven.enforcer.plugin>
         <maven.install.plugin>3.1.2</maven.install.plugin>
         <maven.jar.plugin>3.4.1</maven.jar.plugin>
+        <maven.javadoc.plugin>3.6.3</maven.javadoc.plugin>
         <maven.pmd.plugin>3.22.0</maven.pmd.plugin>
+        <maven.project.info.reports.plugin>3.5.0</maven.project.info.reports.plugin>
         <maven.resources.plugin>3.3.1</maven.resources.plugin>
-        <maven.site.plugin>4.0.0-M13</maven.site.plugin>
+        <maven.site.plugin>4.0.0-M14</maven.site.plugin>
         <maven.surfire.plugin>3.2.5</maven.surfire.plugin>
         <moditect.maven.plugin>1.0.0.RC2</moditect.maven.plugin>
         <native.maven.plugin>0.10.1</native.maven.plugin>
@@ -269,21 +270,101 @@
                 <artifactId>maven-site-plugin</artifactId>
                 <version>${maven.site.plugin}</version>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.plugin}</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven.project.info.reports.plugin}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                            <report>dependencies</report>
+                            <report>licenses</report>
+                            <report>summary</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.plugin}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>javadoc</report>
+                        </reports>
+                    </reportSet>
+                    <reportSet>
+                        <id>tests</id>
+                        <configuration>
+                            <show>private</show>
+                        </configuration>
+                        <reports>
+                            <report>test-javadoc</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${maven.pmd.plugin}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>pmd</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs.maven.plugin}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>spotbugs</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 
     <profiles>
 
         <!-- Profile that adds compiling to a native binary using
              GraalVM an Native Image https://www.graalvm.org/
 
-             Add -PGraalVM or -DGraalVM to use this profile.
+             Add -Pnative or -Dnative to use this profile.
              -->
         <profile>
-            <id>GraalVM</id>
+            <id>native</id>
             <activation>
                 <property>
-                    <name>GraalVM</name>
+                    <name>native</name>
                 </property>
             </activation>
             <build>
@@ -323,7 +404,7 @@
              Add -PImage or -DImage to use this profile.
              -->
         <profile>
-            <id>Image</id>
+            <id>image</id>
             <activation>
                 <property>
                     <name>Image</name>

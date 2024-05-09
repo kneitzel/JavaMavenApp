@@ -7,9 +7,10 @@
 - [Erzeugung eines Images](ImageCreation.md)
 - Überprüfung auf Aktualisierungen
 
-# Statische Codeanalyse
-- PMD
-- SpotBugs
+## [Statische Codeanalyse](StaticCodeAnalysis.md)
+- [PMD](PMD.md)
+- [SpotBugs](SpotBugs.md)
 
-# Sonstiges
+## Sonstiges
+- Reporting
 - Lombok

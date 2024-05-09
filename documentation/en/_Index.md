@@ -7,9 +7,10 @@
 - [Image Creation](ImageCreation.md)
 - Checking of Updates
 
-## Static Code Analysis
-- PMD
-- FindBugs
+## [Static Code Analysis](StaticCodeAnalysis.md)
+- [PMD](PMD.md)
+- [SpotBugs](SpotBugs.md)
 
 ## Other Topics
+- Reporting
 - Lombok
