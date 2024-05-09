@@ -2,6 +2,8 @@
 
 Example Maven Project for a Java Application.
 
+**Update**: Java 21 is now fully supported
+
 This project includes:
 - Lombok to reduce boilerplate code
 - Adding module-info for dependencies that are missing these.
@@ -9,10 +11,11 @@ This project includes:
 - Creation of image (JLink) and app-image (JPackage)
 - Creation of native binary (GraalVM)
 
-Create native executable with GraalVM use one of these:
-- ./mvnw -PGraalVM package
-- ./mvnw -DGraalVM package
+## Requirements
+To use this Template, all you need is a local Java Installation.
+My current advice is to use a long term supported (LTS) version of either Java 17 or Java 21.
 
-Create image (Using JPackage):
-- ./mvnw -PImage package
-- ./mvnw -DImage package
+## Documentation
+
+- **[Documentation in English](documentation/en/_Index.md)**
+- **[Dokumentation in Deutsch](documentation/de/_Index.md)**
