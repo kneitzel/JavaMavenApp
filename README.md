@@ -2,6 +2,8 @@
 
 Example Maven Project for a Java Application.
 
+**Update**: Added reporting to create a site (html documentation of project)
+
 **Update**: Java 21 is now fully supported
 
 This project includes:
