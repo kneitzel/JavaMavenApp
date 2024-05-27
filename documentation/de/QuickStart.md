@@ -33,6 +33,11 @@ Um das Image mit NativeImage / GraalVM zu bauen, rufst du einfach Maven mit dem 
 Ziel install auf:
 ```./mvnw -Dnative install```
 
+## Bau einer fat jar Datei
+
+Über das Profil fatjar läßt sich auch ein fat jar File bauen, welches alle Abhängigkeiten enthält.
+```./mvnw -Dimage install```
+
 ## Ergebnisse der statischen Codeanalyse
 
 Die Codeanalyse läuft automatisch beim Bau des Projektes und die Ergebnisse
