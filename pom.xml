@@ -31,7 +31,7 @@
         <jetbrains.annotations.version>24.1.0</jetbrains.annotations.version>
         <junit.version>5.10.2</junit.version>
         <lombok.version>1.18.32</lombok.version>
-        <mockito.version>5.11.0</mockito.version>
+        <mockito.version>5.12.0</mockito.version>
         <spotbugs.version>4.8.5</spotbugs.version>
 
         <!-- Plugin dependencies -->
@@ -48,10 +48,11 @@
         <maven.pmd.plugin>3.22.0</maven.pmd.plugin>
         <maven.project.info.reports.plugin>3.5.0</maven.project.info.reports.plugin>
         <maven.resources.plugin>3.3.1</maven.resources.plugin>
+        <maven.shade.plugin>3.5.3</maven.shade.plugin>
         <maven.site.plugin>4.0.0-M14</maven.site.plugin>
         <maven.surfire.plugin>3.2.5</maven.surfire.plugin>
         <moditect.maven.plugin>1.0.0.RC2</moditect.maven.plugin>
-        <native.maven.plugin>0.10.1</native.maven.plugin>
+        <native.maven.plugin>0.10.2</native.maven.plugin>
         <spotbugs.maven.plugin>4.8.5.0</spotbugs.maven.plugin>
         
         <!-- other properties -->
@@ -483,6 +484,60 @@
             </build>
         </profile>
 
+        <!-- Profile to build a fat jar
+
+             Add -Pfatjar or -Dfatjar to use this profile.
+        -->
+        <profile>
+            <id>fatjar</id>
+            <activation>
+                <property>
+                    <name>fatjar</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <version>${maven.shade.plugin}</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>shade</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <shadedClassifierName>full</shadedClassifierName>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <manifestEntries>
+                                        <Main-Class>${main.class}</Main-Class>
+                                        <Build-Version>1.0</Build-Version>
+                                    </manifestEntries>
+                                </transformer>
+                            </transformers>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/MANIFEST.MF</exclude>
+                                        <exclude>**/module-info.class</exclude>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
 </project>
