@@ -27,6 +27,11 @@ To build the image with jpackage, the profile image must be used:
 To build the native image with GraalVM, the profile native must be used:
 ```./mvnw -Dnative install```
 
+### Build a fat jar file
+
+You can build a fat jar file using the fatjar Image:
+```./mvnw -Dfatjar package```
+
 ## Static code analysis results
 
 The static code analysis is done during the build of the application. The results can be found in

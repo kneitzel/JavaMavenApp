@@ -14,3 +14,5 @@
 ## Other Topics
 - Reporting
 - Lombok
+
+## [Questions and Answers](qa.md)
