@@ -2,7 +2,6 @@ package de.kneitzel;
 
 import org.jetbrains.annotations.NotNull;
 
-
 /**
  * Starting point of the JavaApp
  */
