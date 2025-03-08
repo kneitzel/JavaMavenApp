@@ -251,7 +251,7 @@
                 <version>${maven.install.plugin}</version>
             </plugin>
 
-            <!-- jar plugin - to remove the warning regarding version -->
+            <!-- jar plugin - set man class and classpath -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
