@@ -2,9 +2,9 @@
 
 Example Maven Project for a Java Application.
 
-**Update**: Added reporting to create a site (html documentation of project)
+**Update**: Java 25 is now fully supported
 
-**Update**: Java 21 is now fully supported
+**Update**: Added reporting to create a site (html documentation of project)
 
 This project includes:
 - Lombok to reduce boilerplate code
