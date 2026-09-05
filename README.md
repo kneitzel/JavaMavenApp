@@ -2,7 +2,7 @@
 
 Example Maven Project for a Java Application.
 
-**Update**: Java 25 is now fully supported
+**Update**: Java 25 is now fully supported. This template is built and tested with JDK 25.
 
 **Update**: Added reporting to create a site (html documentation of project)
 
@@ -15,7 +15,7 @@ This project includes:
 
 ## Requirements
 To use this Template, all you need is a local Java Installation.
-My current advice is to use a long term supported (LTS) version of either Java 17 or Java 21.
+The project targets Java 25 (`<java.version>25</java.version>`). My current advice for general production use is still a long term supported (LTS) version of either Java 17 or Java 21.
 
 ## Documentation
 
