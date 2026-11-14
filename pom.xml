@@ -35,7 +35,7 @@
         <spotbugs.version>4.10.5</spotbugs.version>
 
         <!-- Plugin dependencies -->
-        <codehaus.version.plugin>2.25.1</codehaus.version.plugin>
+        <codehaus.version.plugin>2.25.2</codehaus.version.plugin>
         <jpackage.maven.plugin>0.1.5</jpackage.maven.plugin>
         <maven.clean.plugin>3.5.0</maven.clean.plugin>
         <maven.compiler.plugin>3.16.0</maven.compiler.plugin>
