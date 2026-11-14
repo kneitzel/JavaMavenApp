@@ -1,5 +1,7 @@
 # Quick Start
 
+Install JDK 25, set `JAVA_HOME` to that JDK, and check it with `./mvnw -v`. The wrapper supplies Maven; a separate Maven installation must be at least 3.9.11.
+
 - Simply download a zip file of this project and unzip it somewhere on your computer
 - open the pom.xml and change the settings at the start of the document to fit with your project
 
@@ -24,7 +26,7 @@ To build the image with jpackage, the profile image must be used:
 
 ### Build the native Image (GraalVM)
 
-To build the native image with GraalVM, the profile native must be used:
+Set `JAVA_HOME` to GraalVM for JDK 25 and make sure `native-image` is available. Build the executable with the `native` profile:
 ```./mvnw -Dnative install```
 
 ### Build a fat jar file
