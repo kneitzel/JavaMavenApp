@@ -1,5 +1,7 @@
 # Explanation of the Maven Project file (pom.xml)
 
+The POM sets `java.version` to `25`. The compiler targets Java 25, and Maven Enforcer checks the JDK before compilation.
+
 The Maven Project is described inside a XML document which describes the Project Object Model (pom).
 
 ## Start of the pom.xml

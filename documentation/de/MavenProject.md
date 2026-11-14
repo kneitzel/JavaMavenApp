@@ -1,5 +1,7 @@
 # Erläuterung der Maven Projekt Datei (pom.xml)
 
+Die POM setzt `java.version` auf `25`. Der Compiler baut für Java 25, und Maven Enforcer prüft das JDK vor dem Kompilieren.
+
 Das Maven Projekt wird in einem XML Dokument beschrieben welches das Projekt Objekt Modell (pom) beschreibt.
 
 ## Rahmen der pom.xml

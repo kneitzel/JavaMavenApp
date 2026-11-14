@@ -2,20 +2,21 @@
 
 Example Maven Project for a Java Application.
 
-**Update**: Java 25 is now fully supported. This template is built and tested with JDK 25.
-
 **Update**: Added reporting to create a site (html documentation of project)
 
 This project includes:
 - Lombok to reduce boilerplate code
-- Adding module-info for dependencies that are missing these.
 - static code analysis with PMD and spotbugs
-- Creation of image (JLink) and app-image (JPackage)
+- Creation of a self-contained app image (jpackage)
 - Creation of native binary (GraalVM)
 
+Verified on macOS (Apple Silicon) with OpenJDK 25.0.5 and the Maven wrapper.
+
 ## Requirements
-To use this Template, all you need is a local Java Installation.
-The project targets Java 25 (`<java.version>25</java.version>`). My current advice for general production use is still a long term supported (LTS) version of either Java 17 or Java 21.
+
+Install JDK 25 and point `JAVA_HOME` at it. Run `./mvnw -v` to confirm Maven is using JDK 25. The wrapper supplies Maven; if you use your own installation, use Maven 3.9.11 or later.
+
+Use GraalVM for JDK 25 with `native-image` when building the optional native executable.
 
 ## Documentation
 
